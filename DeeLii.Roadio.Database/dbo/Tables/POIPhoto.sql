@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[POIPhoto]
+(
+	[POIPhotoId] INT NOT NULL PRIMARY KEY, 
+    [POIId] INT NULL, 
+    [PhotoFileName] NVARCHAR(200) NULL, 
+    [DateTaken] DATE NULL, 
+    CONSTRAINT [FK_POIPhoto_POI_POIId] FOREIGN KEY (POIId) REFERENCES [POI]([POIID])
+)

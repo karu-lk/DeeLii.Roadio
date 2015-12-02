@@ -1,0 +1,51 @@
+﻿<div ng-controller="poiController" class="create-poi-container">
+    <div><h6>Create New POI</h6></div>
+    <div class="poi-info">
+        <div class="poi-image-panel">
+            <img id="smallImage" src="#" ng-src="{{imagePath}}" />
+            <button class="btn btn-warning btn-sm" ng-click="capturePoi()">Capture POI</button>
+        </div>
+        <div class="poi-details-panel">
+            <div class="poi-name-container">
+                <label for="poi-name">POI Name</label>
+                <input id="poi-name" />
+            </div>
+            <div class="poi-name-container">
+                <label for="poi-description">Description</label>
+                <input id="poi-description" />
+            </div>
+            <div class="poi-category-container">
+                <label for="poi-category">Category</label>
+                <select id="poi-category">
+                    <option>I'm not sure</option>
+                    <option>Photography</option>
+                    <option>Walk Related</option>
+                    <option>Cycling Related</option>
+                    <option>Evening Catch up</option>
+                </select>
+            </div>
+            <div class="nearest-city-container">
+                <label for="nearest-city">Nearest City</label>
+                <select id="nearest-city">
+                    <option>Wellington</option>
+                    <option>Rotorua</option>
+                    <option>Queenstown</option>
+                    <option>Dunedin</option>
+                    <option>Gisbourne</option>
+                </select>
+            </div>
+            <div class="latitude-container">
+                <label for="latitude">Latitude</label>
+                <input id="latitude" readonly />
+            </div>
+            <div class="longitude-container">
+                <label for="longitude">Longitude</label>
+                <input id="longitude" readonly />
+            </div>
+        </div>
+        <div class="poi-button-panel">
+            <button class="btn btn-primary btn-sm" type="button" id="clear">Clear</button>
+            <button class="btn btn-success btn-sm" type="button" id="save">Save</button>
+        </div>
+    </div>
+</div>

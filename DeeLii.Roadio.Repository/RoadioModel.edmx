@@ -1,0 +1,520 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="RoadioDatabaseEntities.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__RefactorLog">
+          <Key>
+            <PropertyRef Name="OperationKey" />
+          </Key>
+          <Property Name="OperationKey" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Bookmark">
+          <Key>
+            <PropertyRef Name="BookmarkId" />
+          </Key>
+          <Property Name="BookmarkId" Type="int" Nullable="false" />
+          <Property Name="BookmarkName" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Contributor">
+          <Key>
+            <PropertyRef Name="ContributorId" />
+          </Key>
+          <Property Name="ContributorId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+        </EntityType>
+        <EntityType Name="POI">
+          <Key>
+            <PropertyRef Name="POIId" />
+          </Key>
+          <Property Name="POIId" Type="int" Nullable="false" />
+          <Property Name="POICategoryId" Type="int" />
+          <Property Name="POIName" Type="nvarchar" MaxLength="200" />
+          <Property Name="POIDescription" Type="nvarchar" MaxLength="400" />
+          <Property Name="NearestCity" Type="nvarchar" MaxLength="200" />
+          <Property Name="NearestVillage" Type="nvarchar" MaxLength="50" />
+          <Property Name="NearestStateHighway" Type="nvarchar" MaxLength="50" />
+          <Property Name="Latitude" Type="numeric" Precision="12" Scale="8" />
+          <Property Name="Longitude" Type="numeric" Precision="12" Scale="8" />
+        </EntityType>
+        <EntityType Name="POIBookmark">
+          <Key>
+            <PropertyRef Name="POIBookmarkId" />
+          </Key>
+          <Property Name="POIBookmarkId" Type="int" Nullable="false" />
+          <Property Name="POIId" Type="int" />
+          <Property Name="BookmarkId" Type="int" />
+          <Property Name="Distance" Type="numeric" Precision="4" Scale="2" />
+        </EntityType>
+        <EntityType Name="POICategory">
+          <Key>
+            <PropertyRef Name="POICategoryId" />
+          </Key>
+          <Property Name="POICategoryId" Type="int" Nullable="false" />
+          <Property Name="POICategoryName" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="POIFeedback">
+          <Key>
+            <PropertyRef Name="POIFeedbackId" />
+          </Key>
+          <Property Name="POIFeedbackId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="POIPhoto">
+          <Key>
+            <PropertyRef Name="POIPhotoId" />
+          </Key>
+          <Property Name="POIPhotoId" Type="int" Nullable="false" />
+          <Property Name="POIId" Type="int" />
+          <Property Name="PhotoFileName" Type="nvarchar" MaxLength="200" />
+          <Property Name="DateTaken" Type="date" />
+        </EntityType>
+        <EntityType Name="POITag">
+          <Key>
+            <PropertyRef Name="POITagId" />
+          </Key>
+          <Property Name="POITagId" Type="int" Nullable="false" />
+          <Property Name="POIId" Type="int" />
+          <Property Name="TagId" Type="int" />
+        </EntityType>
+        <EntityType Name="Tag">
+          <Key>
+            <PropertyRef Name="TagId" />
+          </Key>
+          <Property Name="TagId" Type="int" Nullable="false" />
+          <Property Name="TagName" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_POI_POICategory_POICategoryId">
+          <End Role="POICategory" Type="Self.POICategory" Multiplicity="0..1" />
+          <End Role="POI" Type="Self.POI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POICategory">
+              <PropertyRef Name="POICategoryId" />
+            </Principal>
+            <Dependent Role="POI">
+              <PropertyRef Name="POICategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_POIBookmark_Bookmark_BookmarkId">
+          <End Role="Bookmark" Type="Self.Bookmark" Multiplicity="0..1" />
+          <End Role="POIBookmark" Type="Self.POIBookmark" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bookmark">
+              <PropertyRef Name="BookmarkId" />
+            </Principal>
+            <Dependent Role="POIBookmark">
+              <PropertyRef Name="BookmarkId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_POIBookmark_POI_POIId">
+          <End Role="POI" Type="Self.POI" Multiplicity="0..1" />
+          <End Role="POIBookmark" Type="Self.POIBookmark" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POI">
+              <PropertyRef Name="POIId" />
+            </Principal>
+            <Dependent Role="POIBookmark">
+              <PropertyRef Name="POIId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_POIPhoto_POI_POIId">
+          <End Role="POI" Type="Self.POI" Multiplicity="0..1" />
+          <End Role="POIPhoto" Type="Self.POIPhoto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POI">
+              <PropertyRef Name="POIId" />
+            </Principal>
+            <Dependent Role="POIPhoto">
+              <PropertyRef Name="POIId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_POITag_POI_POIId">
+          <End Role="POI" Type="Self.POI" Multiplicity="0..1" />
+          <End Role="POITag" Type="Self.POITag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POI">
+              <PropertyRef Name="POIId" />
+            </Principal>
+            <Dependent Role="POITag">
+              <PropertyRef Name="POIId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_POITag_Tag_TagId">
+          <End Role="Tag" Type="Self.Tag" Multiplicity="0..1" />
+          <End Role="POITag" Type="Self.POITag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tag">
+              <PropertyRef Name="TagId" />
+            </Principal>
+            <Dependent Role="POITag">
+              <PropertyRef Name="TagId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RoadioDatabaseEntitiesStoreContainer">
+          <EntitySet Name="__RefactorLog" EntityType="Self.__RefactorLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bookmark" EntityType="Self.Bookmark" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contributor" EntityType="Self.Contributor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POI" EntityType="Self.POI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POIBookmark" EntityType="Self.POIBookmark" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POICategory" EntityType="Self.POICategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POIFeedback" EntityType="Self.POIFeedback" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POIPhoto" EntityType="Self.POIPhoto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POITag" EntityType="Self.POITag" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tag" EntityType="Self.Tag" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_POI_POICategory_POICategoryId" Association="Self.FK_POI_POICategory_POICategoryId">
+            <End Role="POICategory" EntitySet="POICategory" />
+            <End Role="POI" EntitySet="POI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_POIBookmark_Bookmark_BookmarkId" Association="Self.FK_POIBookmark_Bookmark_BookmarkId">
+            <End Role="Bookmark" EntitySet="Bookmark" />
+            <End Role="POIBookmark" EntitySet="POIBookmark" />
+          </AssociationSet>
+          <AssociationSet Name="FK_POIBookmark_POI_POIId" Association="Self.FK_POIBookmark_POI_POIId">
+            <End Role="POI" EntitySet="POI" />
+            <End Role="POIBookmark" EntitySet="POIBookmark" />
+          </AssociationSet>
+          <AssociationSet Name="FK_POIPhoto_POI_POIId" Association="Self.FK_POIPhoto_POI_POIId">
+            <End Role="POI" EntitySet="POI" />
+            <End Role="POIPhoto" EntitySet="POIPhoto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_POITag_POI_POIId" Association="Self.FK_POITag_POI_POIId">
+            <End Role="POI" EntitySet="POI" />
+            <End Role="POITag" EntitySet="POITag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_POITag_Tag_TagId" Association="Self.FK_POITag_Tag_TagId">
+            <End Role="Tag" EntitySet="Tag" />
+            <End Role="POITag" EntitySet="POITag" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RoadioDatabaseEntities" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__RefactorLog">
+          <Key>
+            <PropertyRef Name="OperationKey" />
+          </Key>
+          <Property Name="OperationKey" Type="Guid" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Bookmark">
+          <Key>
+            <PropertyRef Name="BookmarkId" />
+          </Key>
+          <Property Name="BookmarkId" Type="Int32" Nullable="false" />
+          <Property Name="BookmarkName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="POIBookmarks" Relationship="Self.FK_POIBookmark_Bookmark_BookmarkId" FromRole="Bookmark" ToRole="POIBookmark" />
+        </EntityType>
+        <EntityType Name="Contributor">
+          <Key>
+            <PropertyRef Name="ContributorId" />
+          </Key>
+          <Property Name="ContributorId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="POI">
+          <Key>
+            <PropertyRef Name="POIId" />
+          </Key>
+          <Property Name="POIId" Type="Int32" Nullable="false" />
+          <Property Name="POICategoryId" Type="Int32" />
+          <Property Name="POIName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="POIDescription" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="NearestCity" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="NearestVillage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NearestStateHighway" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Latitude" Type="Decimal" Precision="12" Scale="8" />
+          <Property Name="Longitude" Type="Decimal" Precision="12" Scale="8" />
+          <NavigationProperty Name="POICategory" Relationship="Self.FK_POI_POICategory_POICategoryId" FromRole="POI" ToRole="POICategory" />
+          <NavigationProperty Name="POIBookmarks" Relationship="Self.FK_POIBookmark_POI_POIId" FromRole="POI" ToRole="POIBookmark" />
+          <NavigationProperty Name="POIPhotoes" Relationship="Self.FK_POIPhoto_POI_POIId" FromRole="POI" ToRole="POIPhoto" />
+          <NavigationProperty Name="POITags" Relationship="Self.FK_POITag_POI_POIId" FromRole="POI" ToRole="POITag" />
+        </EntityType>
+        <EntityType Name="POIBookmark">
+          <Key>
+            <PropertyRef Name="POIBookmarkId" />
+          </Key>
+          <Property Name="POIBookmarkId" Type="Int32" Nullable="false" />
+          <Property Name="POIId" Type="Int32" />
+          <Property Name="BookmarkId" Type="Int32" />
+          <Property Name="Distance" Type="Decimal" Precision="4" Scale="2" />
+          <NavigationProperty Name="Bookmark" Relationship="Self.FK_POIBookmark_Bookmark_BookmarkId" FromRole="POIBookmark" ToRole="Bookmark" />
+          <NavigationProperty Name="POI" Relationship="Self.FK_POIBookmark_POI_POIId" FromRole="POIBookmark" ToRole="POI" />
+        </EntityType>
+        <EntityType Name="POICategory">
+          <Key>
+            <PropertyRef Name="POICategoryId" />
+          </Key>
+          <Property Name="POICategoryId" Type="Int32" Nullable="false" />
+          <Property Name="POICategoryName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="POIs" Relationship="Self.FK_POI_POICategory_POICategoryId" FromRole="POICategory" ToRole="POI" />
+        </EntityType>
+        <EntityType Name="POIFeedback">
+          <Key>
+            <PropertyRef Name="POIFeedbackId" />
+          </Key>
+          <Property Name="POIFeedbackId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="POIPhoto">
+          <Key>
+            <PropertyRef Name="POIPhotoId" />
+          </Key>
+          <Property Name="POIPhotoId" Type="Int32" Nullable="false" />
+          <Property Name="POIId" Type="Int32" />
+          <Property Name="PhotoFileName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="DateTaken" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="POI" Relationship="Self.FK_POIPhoto_POI_POIId" FromRole="POIPhoto" ToRole="POI" />
+        </EntityType>
+        <EntityType Name="POITag">
+          <Key>
+            <PropertyRef Name="POITagId" />
+          </Key>
+          <Property Name="POITagId" Type="Int32" Nullable="false" />
+          <Property Name="POIId" Type="Int32" />
+          <Property Name="TagId" Type="Int32" />
+          <NavigationProperty Name="POI" Relationship="Self.FK_POITag_POI_POIId" FromRole="POITag" ToRole="POI" />
+          <NavigationProperty Name="Tag" Relationship="Self.FK_POITag_Tag_TagId" FromRole="POITag" ToRole="Tag" />
+        </EntityType>
+        <EntityType Name="Tag">
+          <Key>
+            <PropertyRef Name="TagId" />
+          </Key>
+          <Property Name="TagId" Type="Int32" Nullable="false" />
+          <Property Name="TagName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="POITags" Relationship="Self.FK_POITag_Tag_TagId" FromRole="Tag" ToRole="POITag" />
+        </EntityType>
+        <Association Name="FK_POIBookmark_Bookmark_BookmarkId">
+          <End Role="Bookmark" Type="Self.Bookmark" Multiplicity="0..1" />
+          <End Role="POIBookmark" Type="Self.POIBookmark" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bookmark">
+              <PropertyRef Name="BookmarkId" />
+            </Principal>
+            <Dependent Role="POIBookmark">
+              <PropertyRef Name="BookmarkId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_POI_POICategory_POICategoryId">
+          <End Role="POICategory" Type="Self.POICategory" Multiplicity="0..1" />
+          <End Role="POI" Type="Self.POI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POICategory">
+              <PropertyRef Name="POICategoryId" />
+            </Principal>
+            <Dependent Role="POI">
+              <PropertyRef Name="POICategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_POIBookmark_POI_POIId">
+          <End Role="POI" Type="Self.POI" Multiplicity="0..1" />
+          <End Role="POIBookmark" Type="Self.POIBookmark" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POI">
+              <PropertyRef Name="POIId" />
+            </Principal>
+            <Dependent Role="POIBookmark">
+              <PropertyRef Name="POIId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_POIPhoto_POI_POIId">
+          <End Role="POI" Type="Self.POI" Multiplicity="0..1" />
+          <End Role="POIPhoto" Type="Self.POIPhoto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POI">
+              <PropertyRef Name="POIId" />
+            </Principal>
+            <Dependent Role="POIPhoto">
+              <PropertyRef Name="POIId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_POITag_POI_POIId">
+          <End Role="POI" Type="Self.POI" Multiplicity="0..1" />
+          <End Role="POITag" Type="Self.POITag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POI">
+              <PropertyRef Name="POIId" />
+            </Principal>
+            <Dependent Role="POITag">
+              <PropertyRef Name="POIId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_POITag_Tag_TagId">
+          <End Role="Tag" Type="Self.Tag" Multiplicity="0..1" />
+          <End Role="POITag" Type="Self.POITag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tag">
+              <PropertyRef Name="TagId" />
+            </Principal>
+            <Dependent Role="POITag">
+              <PropertyRef Name="TagId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RoadioDatabaseConnection" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__RefactorLog" EntityType="Self.C__RefactorLog" />
+          <EntitySet Name="Bookmarks" EntityType="Self.Bookmark" />
+          <EntitySet Name="Contributors" EntityType="Self.Contributor" />
+          <EntitySet Name="POIs" EntityType="Self.POI" />
+          <EntitySet Name="POIBookmarks" EntityType="Self.POIBookmark" />
+          <EntitySet Name="POICategories" EntityType="Self.POICategory" />
+          <EntitySet Name="POIFeedbacks" EntityType="Self.POIFeedback" />
+          <EntitySet Name="POIPhotoes" EntityType="Self.POIPhoto" />
+          <EntitySet Name="POITags" EntityType="Self.POITag" />
+          <EntitySet Name="Tags" EntityType="Self.Tag" />
+          <AssociationSet Name="FK_POIBookmark_Bookmark_BookmarkId" Association="Self.FK_POIBookmark_Bookmark_BookmarkId">
+            <End Role="Bookmark" EntitySet="Bookmarks" />
+            <End Role="POIBookmark" EntitySet="POIBookmarks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_POI_POICategory_POICategoryId" Association="Self.FK_POI_POICategory_POICategoryId">
+            <End Role="POICategory" EntitySet="POICategories" />
+            <End Role="POI" EntitySet="POIs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_POIBookmark_POI_POIId" Association="Self.FK_POIBookmark_POI_POIId">
+            <End Role="POI" EntitySet="POIs" />
+            <End Role="POIBookmark" EntitySet="POIBookmarks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_POIPhoto_POI_POIId" Association="Self.FK_POIPhoto_POI_POIId">
+            <End Role="POI" EntitySet="POIs" />
+            <End Role="POIPhoto" EntitySet="POIPhotoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_POITag_POI_POIId" Association="Self.FK_POITag_POI_POIId">
+            <End Role="POI" EntitySet="POIs" />
+            <End Role="POITag" EntitySet="POITags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_POITag_Tag_TagId" Association="Self.FK_POITag_Tag_TagId">
+            <End Role="Tag" EntitySet="Tags" />
+            <End Role="POITag" EntitySet="POITags" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RoadioDatabaseEntitiesStoreContainer" CdmEntityContainer="RoadioDatabaseConnection">
+          <EntitySetMapping Name="C__RefactorLog">
+            <EntityTypeMapping TypeName="RoadioDatabaseEntities.C__RefactorLog">
+              <MappingFragment StoreEntitySet="__RefactorLog">
+                <ScalarProperty Name="OperationKey" ColumnName="OperationKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bookmarks">
+            <EntityTypeMapping TypeName="RoadioDatabaseEntities.Bookmark">
+              <MappingFragment StoreEntitySet="Bookmark">
+                <ScalarProperty Name="BookmarkId" ColumnName="BookmarkId" />
+                <ScalarProperty Name="BookmarkName" ColumnName="BookmarkName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contributors">
+            <EntityTypeMapping TypeName="RoadioDatabaseEntities.Contributor">
+              <MappingFragment StoreEntitySet="Contributor">
+                <ScalarProperty Name="ContributorId" ColumnName="ContributorId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POIs">
+            <EntityTypeMapping TypeName="RoadioDatabaseEntities.POI">
+              <MappingFragment StoreEntitySet="POI">
+                <ScalarProperty Name="POIId" ColumnName="POIId" />
+                <ScalarProperty Name="POICategoryId" ColumnName="POICategoryId" />
+                <ScalarProperty Name="POIName" ColumnName="POIName" />
+                <ScalarProperty Name="POIDescription" ColumnName="POIDescription" />
+                <ScalarProperty Name="NearestCity" ColumnName="NearestCity" />
+                <ScalarProperty Name="NearestVillage" ColumnName="NearestVillage" />
+                <ScalarProperty Name="NearestStateHighway" ColumnName="NearestStateHighway" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POIBookmarks">
+            <EntityTypeMapping TypeName="RoadioDatabaseEntities.POIBookmark">
+              <MappingFragment StoreEntitySet="POIBookmark">
+                <ScalarProperty Name="POIBookmarkId" ColumnName="POIBookmarkId" />
+                <ScalarProperty Name="POIId" ColumnName="POIId" />
+                <ScalarProperty Name="BookmarkId" ColumnName="BookmarkId" />
+                <ScalarProperty Name="Distance" ColumnName="Distance" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POICategories">
+            <EntityTypeMapping TypeName="RoadioDatabaseEntities.POICategory">
+              <MappingFragment StoreEntitySet="POICategory">
+                <ScalarProperty Name="POICategoryId" ColumnName="POICategoryId" />
+                <ScalarProperty Name="POICategoryName" ColumnName="POICategoryName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POIFeedbacks">
+            <EntityTypeMapping TypeName="RoadioDatabaseEntities.POIFeedback">
+              <MappingFragment StoreEntitySet="POIFeedback">
+                <ScalarProperty Name="POIFeedbackId" ColumnName="POIFeedbackId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POIPhotoes">
+            <EntityTypeMapping TypeName="RoadioDatabaseEntities.POIPhoto">
+              <MappingFragment StoreEntitySet="POIPhoto">
+                <ScalarProperty Name="POIPhotoId" ColumnName="POIPhotoId" />
+                <ScalarProperty Name="POIId" ColumnName="POIId" />
+                <ScalarProperty Name="PhotoFileName" ColumnName="PhotoFileName" />
+                <ScalarProperty Name="DateTaken" ColumnName="DateTaken" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POITags">
+            <EntityTypeMapping TypeName="RoadioDatabaseEntities.POITag">
+              <MappingFragment StoreEntitySet="POITag">
+                <ScalarProperty Name="POITagId" ColumnName="POITagId" />
+                <ScalarProperty Name="POIId" ColumnName="POIId" />
+                <ScalarProperty Name="TagId" ColumnName="TagId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tags">
+            <EntityTypeMapping TypeName="RoadioDatabaseEntities.Tag">
+              <MappingFragment StoreEntitySet="Tag">
+                <ScalarProperty Name="TagId" ColumnName="TagId" />
+                <ScalarProperty Name="TagName" ColumnName="TagName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

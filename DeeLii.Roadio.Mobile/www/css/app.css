@@ -1,0 +1,154 @@
+﻿body {
+    /*background-image: url('../images/bg-240x320.png');*/
+    background-image: url('../images/bg-540x960.png');
+}
+
+.customer-info-list {
+    list-style: none;
+}
+
+#head-content {
+}
+
+#body-content {
+    height: 85%;
+}
+
+.head-content {
+    /*margin-top: 6px;*/
+    height: 35px;
+    text-align: center;
+    background-color: #b0b0b0;
+}
+
+    .head-content img {
+        margin-top: 6px;
+    }
+
+    .head-content a {
+        cursor: pointer;
+        height: 24px;
+    }
+
+.back-container {
+    height: 24px;
+    width: auto;
+    margin-right: 20px;
+}
+
+.title-icon {
+    height: 22px;
+    width: auto;
+}
+
+/*HOME PAGE TILES*/
+.welcome-panel {
+    margin-top: 10%;
+    width: 100%;
+    text-align: center;
+}
+
+    .welcome-panel img {
+        margin-bottom: 5px;
+        width: 225px;
+        height: 90px;
+    }
+
+    .welcome-panel p:first-child {
+        margin-bottom: 0px;
+        padding-bottom: 0px;
+    }
+
+    .welcome-panel p:last-child {
+        margin-top: 0px;
+        padding-top: 0px;
+    }
+
+.action-panel {
+    float: left;
+    width: 100%;
+    bottom: 40px;
+    position: absolute;
+}
+
+.button-top-row {
+    float: left;
+    width: 100%;
+}
+
+.button-bottom-row {
+    float: left;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.button-left, .button-right {
+    float: left;
+    width: 50%;
+    text-align: center;
+}
+
+    .button-left img, .button-right img, .button-bottom-row img {
+        width: 98px;
+        height: 98px;
+    }
+
+/*CREATE NEW POI*/
+.create-poi-container {
+    float: left;
+    width: 100%;
+    margin-top: 15px;
+    padding: 0 5px 0 5px;
+}
+
+.poi-info {
+    float: left;
+    width: 100%;
+}
+
+.poi-image-panel {
+    float: left;
+    width: 100%;
+}
+
+    .poi-image-panel img {
+        width: 70%;
+        height: auto;
+        margin: 0 auto;
+    }
+
+    .poi-image-panel button {
+        width: 100%;
+    }
+
+.poi-image-panel {
+    float: left;
+    width: 100%;
+}
+
+.poi-details-panel {
+    float: left;
+    width: 100%;
+    margin-top: 5px;
+}
+
+    .poi-details-panel label {
+        font-size:.9em;
+        min-width: 85px;
+    }
+
+.poi-button-panel {
+    float: left;
+    width: 100%;
+    margin: 5px 0 0 0;
+}
+
+    .poi-button-panel button {
+        width: 48%;
+        float: left;
+    }
+
+        .poi-button-panel button:first-child {
+            margin-right: 2px;
+        }

@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    <!--
+        Customize the content security policy in the meta tag below as needed. Add 'unsafe-inline' to default-src to enable inline JavaScript.
+        For details, see http://go.microsoft.com/fwlink/?LinkID=617521
+    -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+    <title>Roadio on Mobile</title>
+
+    <!-- DeeLii.Roadio.Mobile references -->
+    <link href="css/app.css" rel="stylesheet" />
+</head>
+<body ng-app="roadioMobile" ng-controller="rootController">
+    <div id="container">
+        <div class="head-content">
+            <a ui-sref="root"><img ng-src="{{homeButtonUrl}}" class="back-container" /></a>
+            <img src="images/roadio-without-logo.png" class="title-icon" />
+        </div>
+        <div id="body-content" ui-view></div>
+    </div>
+
+
+    <!--FRAMEWORK LIBRARIES-->
+    <script src="scripts/angular.js"></script>
+
+    <script src="scripts/ngCordova/ng-cordova.js"></script>
+
+    <script src="scripts/jquery-1.9.1.js"></script>
+    <script src="scripts/bootstrap.js"></script>
+    <script src="scripts/AngularUI/ui-router.js"></script>
+    <!-- Cordova reference, this is added to your app when it's built. -->
+    <script src="cordova.js"></script>
+    <script src="scripts/platformOverrides.js"></script>
+
+    <script src="scripts/index.js"></script>
+    <!--APPLICATION SCRIPTS-->
+    <script src="app/app.js"></script>
+    <script src="app/app.routes.js"></script>
+    <!--CONTROLLERS-->
+    <script src="app/root/rootController.js"></script>
+    <script src="app/poi/poiController.js"></script>
+    <script src="app/home/homeController.js"></script>
+    <!--SERVICES-->
+    <!--CSS FRAMEWORKS-->
+    <link href="css/bootstrap.css" rel="stylesheet" />
+</body>
+</html>

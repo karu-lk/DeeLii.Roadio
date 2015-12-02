@@ -1,0 +1,6 @@
+Icons:
+http://www.123rf.com/photo_22801555_teamwork-energy-people-icon-vector.html?fromid=aThFRkw1MnpqcS9LbmtQNTI3Q0tPdz09
+
+Camera:
+http://www.joshmorony.com/store-camera-photos-permanently-using-phonegap-ionic-ngcordova/
+http://stackoverflow.com/questions/10335563/capturing-and-storing-a-picture-taken-with-the-camera-into-a-local-database-ph

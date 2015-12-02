@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="284d04db-61a7-4ec9-8a9d-6b18ce700b57" ChangeDateTime="11/04/2015 22:04:04">
+    <Property Name="ElementName" Value="[dbo].[POI].[Lang]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[POI]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Latitude" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="5c91b3f4-0b79-4b7e-b22c-171c69134b58" ChangeDateTime="11/04/2015 22:08:30">
+    <Property Name="ElementName" Value="[dbo].[POIBookMarks].[POI]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[POIBookMarks]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="POIId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="befcd09d-f337-4a37-b4ed-1a4ae0644081" ChangeDateTime="11/04/2015 22:09:17">
+    <Property Name="ElementName" Value="[dbo].[POI].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[POI]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="POIId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="cb895c57-ae73-4b9e-ae86-03ab29b47806" ChangeDateTime="11/04/2015 22:09:32">
+    <Property Name="ElementName" Value="[dbo].[POIBookMarks].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[POIBookMarks]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="POIBookmarkId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="034c950f-cd96-47e4-80fc-37753d81a539" ChangeDateTime="11/04/2015 22:09:43">
+    <Property Name="ElementName" Value="[dbo].[Bookmark].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Bookmark]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="BookmarkId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="8183f4c8-045b-4c2c-837f-7d92e77fbee3" ChangeDateTime="11/04/2015 22:13:18">
+    <Property Name="ElementName" Value="[dbo].[POICategory].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[POICategory]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="POICategoryId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="b16cc30f-db5f-4291-b608-78517b0e7fc5" ChangeDateTime="11/04/2015 22:15:05">
+    <Property Name="ElementName" Value="[dbo].[Contributor].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Contributor]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ContributorId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="823cf5bf-9241-484b-a8fc-49553c28e10f" ChangeDateTime="11/04/2015 22:16:42">
+    <Property Name="ElementName" Value="[dbo].[POIPhotos].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[POIPhotos]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="POIPhotoId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="2312cded-19c2-4c53-af26-89f03de5e67e" ChangeDateTime="11/04/2015 22:38:41">
+    <Property Name="ElementName" Value="[dbo].[Tag].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Tag]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TagId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="0d5594a7-acea-4738-be50-18d3e3953278" ChangeDateTime="11/04/2015 22:39:08">
+    <Property Name="ElementName" Value="[dbo].[POITags].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[POITags]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="POITagId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="701bbe71-17d2-43e1-a5ab-e6f19d21d9f9" ChangeDateTime="11/04/2015 22:47:17">
+    <Property Name="ElementName" Value="[dbo].[POIFeedback].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[POIFeedback]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="POIFeedbackId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="1abfe61a-7efa-4355-a558-ad92e086ef6a" ChangeDateTime="11/04/2015 23:58:29">
+    <Property Name="ElementName" Value="[dbo].[FK_POIBookmark_ToTable]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[POIBookmark]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_POIBookmark_Bookmark_BookmarkId]" />
+  </Operation>
+</Operations>

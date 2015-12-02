@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bd8e7fa3d78146a3a1d02f73f2e33e12" Name="Diagram1">
+        <EntityTypeShape EntityType="RoadioDatabaseEntities.C__RefactorLog" Width="1.5" PointX="7.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RoadioDatabaseEntities.Bookmark" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RoadioDatabaseEntities.Contributor" Width="1.5" PointX="7.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RoadioDatabaseEntities.POI" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RoadioDatabaseEntities.POIBookmark" Width="1.5" PointX="5.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RoadioDatabaseEntities.POICategory" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RoadioDatabaseEntities.POIFeedback" Width="1.5" PointX="7.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RoadioDatabaseEntities.POIPhoto" Width="1.5" PointX="5.25" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RoadioDatabaseEntities.POITag" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RoadioDatabaseEntities.Tag" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="RoadioDatabaseEntities.FK_POIBookmark_Bookmark_BookmarkId" ManuallyRouted="false" />
+        <AssociationConnector Association="RoadioDatabaseEntities.FK_POI_POICategory_POICategoryId" ManuallyRouted="false" />
+        <AssociationConnector Association="RoadioDatabaseEntities.FK_POIBookmark_POI_POIId" ManuallyRouted="false" />
+        <AssociationConnector Association="RoadioDatabaseEntities.FK_POIPhoto_POI_POIId" ManuallyRouted="false" />
+        <AssociationConnector Association="RoadioDatabaseEntities.FK_POITag_POI_POIId" ManuallyRouted="false" />
+        <AssociationConnector Association="RoadioDatabaseEntities.FK_POITag_Tag_TagId" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
