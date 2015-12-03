@@ -30,10 +30,15 @@
         height: 24px;
     }
 
+    .head-content div {
+        padding-left:10px;
+        float:left;
+    }
+
 .back-container {
     height: 24px;
     width: auto;
-    margin-right: 20px;
+    margin-right: 2px;
 }
 
 .title-icon {
@@ -102,6 +107,10 @@
     padding: 0 5px 0 5px;
 }
 
+    .create-poi-container h6 {
+        margin-top:0px;
+    }
+
 .poi-info {
     float: left;
     width: 100%;
@@ -113,7 +122,7 @@
 }
 
     .poi-image-panel img {
-        width: 70%;
+        width: 95%;
         height: auto;
         margin: 0 auto;
     }
@@ -134,7 +143,7 @@
 }
 
     .poi-details-panel label {
-        font-size:.9em;
+        font-size: 1em;
         min-width: 85px;
     }
 
@@ -152,3 +161,103 @@
         .poi-button-panel button:first-child {
             margin-right: 2px;
         }
+
+.poi-name-container, .poi-name-container, .poi-category-container, .nearest-city-container {
+    padding-bottom: 2px;
+}
+
+/*THUMBNAIL IMAGE GALLERY*/div.thumb-image-gallery {
+	width:30%;
+	min-width:300px;
+	margin:0 auto;
+	font-size:100%;
+}
+
+div.thumb-image-gallery:after {
+}
+
+ul {
+	width:100%;
+	background:#ccc;
+	list-style:none;
+	float:left;
+	padding:0 0 2.5% 0;
+	margin-top:5px;
+}
+
+ul li {
+	width:30%;
+	float:left;
+	margin:2.5% 0 0 2.5%;
+	position:relative;
+}
+
+ul li img {
+	max-width:100%;
+	float:left;
+	border:2px solid #eee;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+}
+
+/*----------------------------------------
+	Gallery Five
+-----------------------------------------*/
+.gal-5 li {
+	-moz-transition:all 0.6s ease;
+	-webkit-transition:all 0.6s ease;
+	-o-transition:all 0.6s ease;
+	-ms-transition:all 0.6s ease;
+	transition:all 0.6s ease;
+	opacity:0.6;
+	position:relative;
+}
+
+.gal-5 li:hover {
+	opacity:1;
+}
+
+.gal-5 li:target {
+	-moz-transform:scale(2.2);
+	-webkit-transform:scale(2.2);
+	-o-transform:scale(2.2);
+	-ms-transform:scale(2.2);
+	transform:scale(2.2);
+	z-index:2;
+	opacity:1;
+}
+
+.gal-5 li:target img {
+	-moz-box-shadow:5px 3px 5px rgba(0, 0, 0, 0.3);
+	-webkit-box-shadow:5px 3px 5px rgba(0, 0, 0, 0.3);
+	box-shadow:5px 3px 5px rgba(0, 0, 0, 0.3);
+}
+
+.close {
+	display:none;
+	font:0.3em/1em Arial, Helvetica, sans-serif;
+	text-transform:uppercase;
+	letter-spacing:0.3em;
+	text-decoration:none;
+	background:#c15252;
+	padding:2px 2px;
+	-moz-border-radius:2px;
+	-webkit-border-radius:2px;
+	border-radius:2px;
+	color:#fff;
+	position:absolute;
+	top:-3px;
+	right:0;
+	-moz-ox-shadow:2px 2px 3px rgba(0, 0, 0, 0.2);
+	-webkit-box-shadow:2px 2px 3px rgba(0, 0, 0, 0.2);
+	box-shadow:2px 2px 3px rgba(0, 0, 0, 0.2);
+}
+
+.close:hover {
+	background:#d06464;
+}
+
+.gal-5 li:target .close {
+	display:inline;
+}

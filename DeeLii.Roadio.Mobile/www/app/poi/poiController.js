@@ -1,25 +1,38 @@
-﻿roadioMobile.controller('poiController', ['$scope', '$state', function ($scope, $state) {
+﻿roadioMobile.controller('poiController', ['$scope', '$state', '$cordovaCamera', function ($scope, $state, $cordovaCamera) {
     $scope.greeting = 'Hola!';
-    $scope.imagePath = '';
+    $scope.captures = [];
+    $scope.captureCount = undefined;
+
     function init() {
+        $scope.captureCount = 0;
+        $scope.captureButtonTitle = "Capture POI";
+        for (var i = 0; i < 3; i++) {
+            $scope.captures.push("images/empty-photo-placeholder.png");
+        }
     };
 
-    document.addEventListener("deviceready", function () {
-        $cordovaPlugin.someFunction().then(success, error);
-    }, false);
+    init();
 
     $scope.capturePoi = function () {
-        navigator.camera.getPicture(onSuccess, onFail, {
-            quality: 10,
-            destinationType: Camera.DestinationType.FILE_URI
-        });
-
-        function onSuccess(imageUrl) {
-            $scope.imagePath = imageUrl;
-        }
-
-        function onFail(message) {
-            alert('Failed because: ' + message);
-        }
+        document.addEventListener("deviceready", function () {
+            var options = {
+                quality: 50,
+                destinationType: Camera.DestinationType.DATA_URL,
+                sourceType: Camera.PictureSourceType.CAMERA,
+                allowEdit: true,
+                encodingType: Camera.EncodingType.JPEG,
+                targetWidth: 100,
+                targetHeight: 100,
+                popoverOptions: CameraPopoverOptions,
+                saveToPhotoAlbum: false,
+                correctOrientation: true
+            };
+            $cordovaCamera.getPicture(options).then(function (captureData) {
+                $scope.captures[$scope.captureCount]="data:image/jpeg;base64," + captureData;
+                $scope.captureCount++;
+            }, function (err) {
+                alert(err);
+            });
+        }, false);
     };
 }]);

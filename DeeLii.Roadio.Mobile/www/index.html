@@ -16,7 +16,7 @@
 <body ng-app="roadioMobile" ng-controller="rootController">
     <div id="container">
         <div class="head-content">
-            <a ui-sref="root"><img ng-src="{{homeButtonUrl}}" class="back-container" /></a>
+            <div ng-show="!isRootController()"><a ui-sref="root"><img ng-src="{{homeButtonUrl}}" class="back-container" /></a></div>
             <img src="images/roadio-without-logo.png" class="title-icon" />
         </div>
         <div id="body-content" ui-view></div>

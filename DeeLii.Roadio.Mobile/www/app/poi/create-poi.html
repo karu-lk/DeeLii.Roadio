@@ -2,7 +2,15 @@
     <div><h6>Create New POI</h6></div>
     <div class="poi-info">
         <div class="poi-image-panel">
-            <img id="smallImage" src="#" ng-src="{{imagePath}}" />
+            <div class="thumb-image-gallery">
+                <ul class="gal-5">
+                    <li id="one"><a class="close" href="#gal-five">Close</a><a href="#one"><img ng-src="{{captures[0]}}" alt=""></a></li>
+                    <li id="two"><a class="close" href="#gal-five">Close</a><a href="#two"><img ng-src="{{captures[1]}}" alt=""></a></li>
+                    <li id="three"><a class="close" href="#gal-five">Close</a><a href="#three"><img ng-src="{{captures[2]}}" alt=""></a></li>
+                </ul>
+            </div>
+
+            <!--<img id="smallImage" src="#" ng-src="{{firstCaptureData}}" />-->
             <button class="btn btn-warning btn-sm" ng-click="capturePoi()">Capture POI</button>
         </div>
         <div class="poi-details-panel">
