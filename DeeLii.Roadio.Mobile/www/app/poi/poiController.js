@@ -1,4 +1,4 @@
-﻿roadioMobile.controller('poiController', ['$scope', '$state', '$cordovaCamera', function ($scope, $state, $cordovaCamera) {
+﻿roadioMobile.controller('poiController', ['$scope', '$state', '$cordovaCamera', '$cordovaGeolocation', function ($scope, $state, $cordovaCamera, $cordovaGeolocation) {
     $scope.greeting = 'Hola!';
     $scope.captures = [];
     $scope.captureCount = undefined;
@@ -28,11 +28,28 @@
                 correctOrientation: true
             };
             $cordovaCamera.getPicture(options).then(function (captureData) {
-                $scope.captures[$scope.captureCount]="data:image/jpeg;base64," + captureData;
+                $scope.captures[$scope.captureCount] = "data:image/jpeg;base64," + captureData;
+
+                //$cordovaProgress.showSimple(true);
+                getLocation($cordovaGeolocation);
+                //$cordovaProgress.hide();
+
                 $scope.captureCount++;
             }, function (err) {
                 alert(err);
             });
         }, false);
+    };
+
+    function getLocation($cordovaGeolocation) {
+        var posOptions = { timeout: 10000, enableHighAccuracy: false };
+        $cordovaGeolocation
+          .getCurrentPosition(posOptions)
+          .then(function (position) {
+              $scope.lat = position.coords.latitude;
+              $scope.long = position.coords.longitude;
+          }, function (err) {
+              alert(err);
+          });
     };
 }]);
